@@ -162,12 +162,10 @@ namespace stftpitchshift
       const double quefrency = 0,
       const double distortion = 1);
 
-  private:
-
     const std::shared_ptr<FFT> fft;
     const size_t framesize;
     const size_t hopsize;
-    const double samplerate;
+  double samplerate;
     const bool normalization;
     const bool chronometry;
 
