@@ -7,6 +7,8 @@ option(DEB   "Enable deb package build for library and executable" OFF)
 option(BREW  "Enable homebrew package build for library and executable" OFF)
 option(WASM  "Enable web assembly build" OFF)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 ")
+set(CMAKE_CXX_LINK_FLAGS "${CMAKE_CXX_LINK_FLAGS} -u __atomic_load_4 -latomic")
 if(MSVC)
 
   # optionally treat warnings as errors
@@ -45,4 +47,5 @@ else()
   include("${CMAKE_CURRENT_LIST_DIR}/cpp/StftPitchShift/LibStftPitchShift.cmake")
   include("${CMAKE_CURRENT_LIST_DIR}/cpp/StftPitchShift/TheStftPitchShift.cmake")
   include("${CMAKE_CURRENT_LIST_DIR}/examples/CMakeLists.txt")
+  include("${CMAKE_CURRENT_LIST_DIR}/ladspa/CMakeLists.txt")
 endif()
